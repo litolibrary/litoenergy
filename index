@@ -1,0 +1,589 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="keywords" content="htmlcss bootstrap menu, navbar, offcanvas, sidebar nav menu CSS examples" />
+<meta name="description" content="Bootstrap 5 navbar make offcanvas on responsive mobile" />  
+
+<title>Bitcoin Exchange | Cryptocurrency Exchange | Binance</title>
+	<link rel="stylesheet" type="text/css" href="css/binance.css">
+	<link rel="stylesheet" type="text/css" href="css/responsive.css">
+	<link rel="stylesheet" type="text/css" href="css/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+	<link rel="icon"  href="images/logo.svg">
+
+<style type="text/css">
+
+body.offcanvas-active{
+	overflow:hidden;
+}
+
+.offcanvas-header{ display:none; }
+
+.screen-darken{
+	height: 100%;
+	width:0%;
+	z-index: 30;
+	position: fixed;
+	top: 0;
+	right: 0;
+	opacity:0;
+	visibility:hidden;
+	background-color: rgba(34, 34, 34, 0.6);
+	transition:opacity .2s linear, visibility 0.2s, width 2s ease-in;
+}
+
+.screen-darken.active{
+	z-index:10; 
+	transition:opacity .3s ease, width 0s;
+    opacity:1;
+    width:100%;
+    visibility:visible;
+}
+
+/* ============ mobile view ============ */
+@media all and (max-width: 991px) {
+	
+	.offcanvas-header{ display:block; }
+
+	.mobile-offcanvas{
+		visibility: hidden;
+		transform:translateX(-50%);
+	    border-radius:0; 
+		display:block;
+	    position: fixed;
+	    top: 0; left:0;
+	    height: 100%;
+	    z-index: 1200;
+	    width:80%;
+	    overflow-y: scroll;
+	    overflow-x: hidden;
+	    transition: visibility .3s ease-in-out, transform .3s ease-in-out;
+	}
+
+	.mobile-offcanvas.show{
+		visibility: visible;
+    	transform: translateX(0);
+	}
+	.mobile-offcanvas .container, .mobile-offcanvas .container-fluid{
+		display: block;
+	}
+
+}	
+/* ============ mobile view .end// ============ */
+</style>
+
+<script type="text/javascript">
+
+	function darken_screen(yesno){
+		if( yesno == true ){
+			document.querySelector('.screen-darken').classList.add('active');
+		}
+		else if(yesno == false){
+			document.querySelector('.screen-darken').classList.remove('active');
+		}
+	}
+	
+	function close_offcanvas(){
+		darken_screen(false);
+		document.querySelector('.mobile-offcanvas.show').classList.remove('show');
+		document.body.classList.remove('offcanvas-active');
+	}
+
+	function show_offcanvas(offcanvas_id){
+		darken_screen(true);
+		document.getElementById(offcanvas_id).classList.add('show');
+		document.body.classList.add('offcanvas-active');
+	}
+
+	document.addEventListener("DOMContentLoaded", function(){
+		document.querySelectorAll('[data-trigger]').forEach(function(everyelement){
+			
+			let offcanvas_id = everyelement.getAttribute('data-trigger');
+			
+			everyelement.addEventListener('click', function (e) {
+				e.preventDefault();
+	        	show_offcanvas(offcanvas_id);
+	  			
+			});
+		});
+
+		document.querySelectorAll('.btn-close').forEach(function(everybutton){
+			
+			everybutton.addEventListener('click', function (e) {
+				e.preventDefault();
+	        	close_offcanvas();
+	  		});
+		});
+
+		document.querySelector('.screen-darken').addEventListener('click', function(event){
+			close_offcanvas();
+		});
+		
+    }); 
+	// DOMContentLoaded  end
+</script>
+
+</head>
+<body>
+
+<span class="screen-darken"></span>
+
+
+    
+
+	<div class="bg-dark text-end">
+		<button data-trigger="navbar_main" class="d-lg-none navbar-toggler" type="button">  <span class="fa fa-bars" style="color: white; font-size: 30px"></span> </button>
+			
+	</div>
+
+<!-- ============= COMPONENT ============== -->
+<nav id="navbar_main" class="mobile-offcanvas navbar navbar-expand-lg navbar-white bg-dark">
+ <div class="container-fluid">
+    <div class="offcanvas-header">  
+		<button class="btn-close float-end" style="background-color: white;"></button>
+	</div>
+   	<a class="navbar-brand" style="color: #ffc107;" href="https://binance.com/en">
+		<img src="images/logo.svg" height="25">	BINANCE
+	</a>
+
+	<ul class="navbar-nav">
+		<li class="nav-item dropdown px-2">
+			<a href="#" class="nav-link" data-bs-toggle="dropdown"><i class="fa fa-th" style="font-size: 22px;"></i></a>
+			<ul class="dropdown-menu" style="background-color: #212529;">
+				<li><a href="https://www.binance.com/en/trade/BTC_USDT"class="dropdown-item"><i class="fa fa-home" style="font-size: 20px; color: #ffc107;"></i> Exchange<p class="drophelp" style="color: #f8f9fa; padding-left: 23px;">Blockchain and crypto assets exchange</p></a></li>
+				<li><a href="https://academy.binance.com/"class="dropdown-item"><i class="fa fa-graduation-cap" style="font-size: 20px; color: #ffc107;"></i> Academy<p class="drophelp" style="color: #f8f9fa; padding-left: 23px;">Blockchain and crypto education</p></a></li>
+				<li><a href="https://www.binance.com/en/broker"class="dropdown-item"><i class="fa fa-bell" style="font-size: 20px; color: #ffc107;"></i> Broker<p class="drophelp" style="color: #f8f9fa; padding-left: 23px;">Trading and terminal solutions</p></a></li>
+				<li><a href="https://www.binance.charity/"class="dropdown-item"><i class="fa fa-globe" style="font-size: 20px; color: #ffc107;"></i> Charity<p class="drophelp" style="color: #f8f9fa; padding-left: 23px;">Charity</p></a></li>
+				<li><a href="https://cloud.binance.com/"class="dropdown-item"><i class="fa fa-clock-o" style="font-size: 20px; color: #ffc107;"></i> Cloud<p class="drophelp" style="color: #f8f9fa; padding-left: 23px;">Enterprise exchange solution</p></a></li>
+				<li><a href="https://www.binance.org/en"class="dropdown-item"><i class="fa fa-download" style="font-size: 20px; color: #ffc107;"></i> DEX<p class="drophelp" style="color: #f8f9fa; padding-left: 23px;">Fast and secure digital asset exchange</p></a></li>
+				<li><a href="https://labs.binance.com/"class="dropdown-item"><i class="fa fa-file-o" style="font-size: 20px; color: #ffc107;"></i> Labs<p class="drophelp" style="color: #f8f9fa; padding-left: 23px;">Incubator for top blockchain exchange</p></a></li>
+				<li><a href="https://launchpad.binance.com/en"class="dropdown-item"><i class="fa fa-book" style="font-size: 20px; color: #ffc107;"></i> Launchpad<p class="drophelp" style="color: #f8f9fa; padding-left: 23px;">Token launch platform</p></a></li>
+				<li><a href="https://research.binance.com/"class="dropdown-item"><i class="fa fa-image" style="font-size: 20px; color: #ffc107;"></i> Research<p class="drophelp" style="color: #f8f9fa; padding-left: 23px;">Institutional grade analysis and report</p></a></li>
+			</ul>
+		</li>
+		<li class="nav-item dropdown px-2"><a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Buy Crypto <i class="badge badge-sm badge-warning text-dark">USD</i></a>
+			<ul class="dropdown-menu" style="background-color: #212529;">
+				<li style="border-bottom: 1px solid #f8f9fa; margin-bottom: 15px;"><a href="#" class="dropdown-item"><i class="fa fa-alicorn"></i>Pay with <i class="badge badge-warning text-dark float-end">USD</i></a></li>
+				<li><a href="https://www.binance.com/en/my/wallet/exchange/deposit/fiat/USD?channel=bank%20transfer" class="dropdown-item">Bank Deposit<p class="drophelp" style="color: #f8f9fa;">Swift Bank Transfer</p></a></li>
+				<li><a href="https://www.binance.com/en/buy-sell-crypto?channel=hzBankcard&fiat=USD" class="dropdown-item">Credit/Debit Card<p class="drophelp" style="color: #f8f9fa;">Visa, MasterCard</p></a></li>
+				<li><a href="https://p2p.binance.com/en" class="dropdown-item">P2P Trading<p class="drophelp" style="color: #f8f9fa;">Bank Transfer and 100+ Options</p></a></li>
+				<li><a href="https://www.binance.com/en/buy-sell-crypto/other-channel/buy/USD/BUSD/" class="dropdown-item">Third-Party Payment<p class="drophelp" style="color: #f8f9fa;">Paxos</p></a></li>
+				
+			</ul>
+		</li>
+		<li class="nav-item px-2"><a href="#" class="nav-link">Markets</a></li>
+		<li class="nav-item dropdown px-2"><a href="#" class="nav-link dropdown-toggle " data-bs-toggle="dropdown">Trade</a>
+			<ul class="dropdown-menu" style="background-color: #212529;">
+				<li><a href="https://www.binance.com/en/convert" class="dropdown-item">Convert<p class="drophelp" style="color: #f8f9fa;">The easiest way to convert trade</p></a></li>
+				<li><a href="https://www.binance.com/en/trade/BTC_USDT?layout=basic" class="dropdown-item">Classic<p class="drophelp" style="color: #f8f9fa;">Simple and easy to use interface</p></a></li>
+				<li><a href="https://www.binance.com/en/trade/BTC_USDT?layout=pro" class="dropdown-item">Advanced<p class="drophelp" style="color: #f8f9fa;">Full access to all trading tools</p></a></li>
+				<li><a href="https://www.binance.com/en/trade/BTC_USDT?type=cross" class="dropdown-item">Margin<p class="drophelp" style="color: #f8f9fa;">Increase your profits with leverage</p></a></li>
+				<li><a href="https://p2p.binance.com/en" class="dropdown-item">P2P<p class="drophelp" style="color: #f8f9fa;">Increase your leverage</p></a></li>
+				<li><a href="https://www.binance.com/en/stock-token" class="dropdown-item">Stock Token<p class="drophelp" style="color: #f8f9fa;">Bank transfers and 100+ options</p></a></li>
+			</ul>
+		</li>
+		<li class="nav-item dropdown px-2"><a href="#" class="nav-link dropdown-toggle " data-bs-toggle="dropdown">Derivatives</a>
+			<ul class="dropdown-menu" style="background-color: #212529;">
+				<li><a href="https://www.binance.com/en/futures/BTCUSDT" class="dropdown-item">USDs M-Futures<p class="drophelp" style="color: #f8f9fa;">USD@ marginated with no expiraton with leverages of 125*</p></a></li>
+				<li><a href="https://www.binance.com/en/delivery/btcusd_quarter" class="dropdown-item">COIN M-Futures<p class="drophelp" style="color: #f8f9fa;">Token margined with or without expiry date and up to 125* leverage</p></a></li>
+				<li><a href="https://voptions.binance.com/en" class="dropdown-item">Vanilla Options<span class="badge bg-warning">new</span><p class="drophelp" style="color: #f8f9fa;">Buy and sell European-vanilla option</p></a></li>
+				<li><a href="https://www.binance.com/en/leveraged-tokens/tokens/allTokens" class="dropdown-item">Leverage Token<p class="drophelp" style="color: #f8f9fa;">Enjoy increased leverage without risk of liuidation</p></a></li>
+				<li><a href="https://www.binance.com/en/futures-activity/battle/um/BTC_USDT" class="dropdown-item">Battle<span class="badge bg-warning">new</span><p class="drophelp" style="color: #f8f9fa;">Battle to win long vs short</p></a></li>
+			</ul>
+		</li>
+		<li class="nav-item dropdown px-2">
+			<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Finances</a>
+				<ul class="dropdown-menu" style="background-color: #212529;">
+					<li><a href="https://www.binance.com/en/earn"class="dropdown-item">Binance Earn<p class="drophelp" style="color: #f8f9fa;">One stop investment solution</p></a></li>
+					<li><a href="https://pool.binance.com/en"class="dropdown-item">Binance Pool<p class="drophelp" style="color: #f8f9fa;">Mine more rewards by connecting to the pool</p></a></li>
+					<li><a href="https://www.binance.com/en/cards/"class="dropdown-item">Binance Visa Card<span class="badge bg-warning">new</span><p class="drophelp" style="color: #f8f9fa;">Convert and pay with crypto worldwide</p></a></li>
+					<li><a href="https://www.binance.com/en/loan"class="dropdown-item">Crypto Loans<p class="drophelp" style="color: #f8f9fa;">Get instant loans secured by crpyto assets</p></a></li>
+					<li><a href="https://www.binance.com/en/swap/liquidity"class="dropdown-item">Liuid Swap<span class="badge bg-warning">new</span><p class="drophelp" style="color: #f8f9fa;">Become a liuidity provider & earn double</p></a></li>
+			    </ul>
+		</li>
+	</ul>
+	<ul class="navbar-nav ms-auto">
+		<li><a href="https://accounts.binance.com/en/login?" class="nav-link nav-end mx-3">Log In</a></li>
+		<li><a href="https://accounts.binance.com/en/register" class="nav-link btn-warning btn-sm btn text-dark px-3">Register</a></li>
+		<li><a href="https://www.binance.com/en/download" class="nav-link ">Download</a></li>
+		<li><a href="javascript:void(0)" class="nav-link ">English | USD</a></li>
+	</ul>
+
+ </div> <!-- container-fluid.// -->
+</nav>
+<!-- ============= COMPONENT END// ============== -->
+
+
+
+	<main>
+		<section class="section-content">
+			<div class="container-fluid" style="background-color: black;">
+				<div class="text-center text-light pt-5 pb-5">
+					<h3 class="display-6">Buy & Sell Crypto in minutes</h3>
+					<b><p class="display-8 pt-2 pb-3 text-secondary">Join the world's largest crypto exchange</p></b>
+					<button class="btn btn-warning btn-lg" style="font-size: 15px;">Register Now</button>
+				</div>
+			</div>
+			<div class="container-fluid">
+				<div class="row text-light text-center text-uppercase">
+					<div style="background-color: black; overflow:hidden;  text-align: right; line-height:14px; font-size: 12px; font-feature-settings: normal; text-size-adjust: 100%; padding:1px;padding: 0px; margin: 0px; width: 100%;"><div style="height:40px; padding:0px; margin:0px; width: 100%;"><iframe src="https://widget.coinlib.io/widget?type=horizontal_v2&theme=light&pref_coin_id=1505&invert_hover=" width="100%" height="36px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0" style="border:0;margin:0;padding:0;"></iframe></div></div>
+				</div>
+			</div>
+		</section>
+		<section class="port ">
+			<div class="container mt-4">
+				<div class="row">
+					<div class="col-3">
+						<img src="images/cap.png" alt="myimage" height="130px">
+					</div>
+					<div class="col-3">
+						<img src="images/cap2.png" alt="myimage" height="130px">
+					</div>
+					<div class="col-3">
+						<img src="images/cap3.png" alt="myimage" height="130px">
+					</div>
+					<div class="col-3">
+						<img src="images/cap4.png" alt="myimage" height="130px">
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="bg-light type">
+			<div class="container mt-5">
+				<div class="text-center pt-3"><a href="https://www.binance.com/en/support/announcement/ef5d2a6c40d34e918039658506d809f1" class="annoce"><i></i>Binance Has Completed SONM (SNM) Token Migration & Redenomination Plan</a></div>
+					<div class="row mt-5">
+						<div style="height:430px; background-color: #f8f9fa; overflow:hidden; box-shadow: 0, 0, 5 0 #fff font-feature-settings: normal; text-size-adjust: 100%;  padding: 0px; margin: 0px; width: 100%;"><div style="height:413px; padding:0px; margin:0px; width: 100%;"><iframe src="https://widget.coinlib.io/widget?type=full_v2&theme=light&cnt=6&pref_coin_id=1505&graph=yes" width="100%" height="409px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0" style="border:0;margin:0;padding:0;"></iframe></div><div style="color: #f8f9fa; line-height: 14px; font-weight: 400; font-size: 11px;  padding: 2px 6px; width: 100%; font-family: Verdana, Tahoma, Arial, sans-serif;"></div>
+					</div>
+				</div>
+			</div>
+			<div class="row text-center mt-2">
+					<a href="https://www.binance.com/en/markets" class="annoce"><small>View More Markets <span class="iconify" data-icon="feather:chevron-right" data-inline="false"></span> </small></a>
+				</div>
+			<div class="container-fluid pt-5">
+				<div class="row">
+					<h3 class="py-3" style="font-size: 40px;"><b>Trade. Anywhere.</b></h3>
+					<h6>Compatible with multiple devices, start trading with safety and convenience.</h6>
+				</div>
+				<div class="row">
+					<div class="col-md-6 andriod">
+						<img src="images/andriod.png" class="img-responsive" width="100%" height="400" >
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-12">
+								<img src="images/barcode.jpg">
+								<label style="line-height: 25px"><small>Scan to Download <br> iOS & Android</small></label>
+							</div>
+							<div class="row text-center ">
+								<div class="col-4" style="height: 100px;">
+									<div class="icon pt-3">
+										<a href="" class="ahref"><i class="fa fa-apple" style="font-size: 30px;"><br></i><br>App Store</a>
+									</div>
+								</div>
+								<div class="col-4" style="height: 100px;">
+									<div class="icon pt-3">
+										<a href="" class="ahref"><i class="fa fa-android" style="font-size: 30px;"><br></i><br>Android APK</a>
+									</div>
+								</div>
+								<div class="col-4" style="height: 100px;">
+									<div class="icon pt-3">
+										<a href="" class="ahref"><img src="https://img.icons8.com/material-sharp/24/000000/google-play.png" style="font-size: 30px;"><br>Google Play</a>
+									</div>
+								</div>
+							</div>
+							<div class="row text-center" style="height: 100px;">
+								<div class="col-4">
+									<div class="icon pt-3">
+										<a href="" class="ahref"><img src="https://img.icons8.com/ios-glyphs/30/000000/macos-close.png" style="font-size: 30px;"><br>MacOS</a>
+									</div>
+								</div>
+								<div class="col-4" style="height: 100px;">
+									<div class="icon pt-3">
+										<a href="" class="ahref"><i class="fa fa-windows" style="font-size: 30px;"><br></i><br>Windows </a>
+									</div>
+								</div>
+								<div class="col-4" style="height: 100px;">
+									<div class="icon pt-3">
+										<a href="" class="ahref"><i class="fa fa-linux" style="font-size: 30px;"><br></i><br>Linux </a>
+									</div>
+								</div>
+							</div>
+							<div class="row text-center type" style="height: 100px;">
+								<div class="col-4">
+									<div class="icon pt-3">
+										<a href="" class="ahref"><i class="fa fa-cog" style="font-size: 30px;"><br></i><br>API</a>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<div class="row text-center mt-4">
+					<a href="https://www.binance.com/en/download" class="annoce"><small>More Download option <span class="iconify" data-icon="feather:chevron-right" data-inline="false"></span> </small></a>
+				</div>
+			</div>
+		</section>
+		<section class="mt-5 trader">
+			<div class="container">
+				<div class="row">
+					<h3 style="font-size: 35px;"><b>Top Traders</b></h3>
+				</div>
+				<div class="mt-4  row justify-content-center text-center">
+					<div class="mt-4 col-md-3 col-6 ">
+						<img src="images/t.jpg"  class="img">
+
+						<h5 class="mt-3">Allan Henry</h5>
+						<p>Trader at uniswap</p>
+						<p>Rating:<i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star"></i></p>
+						<button class="btn btn-warning">Start Chat</button>
+					</div>
+					<div class="mt-4 col-md-3 col-6 ">
+						<img src="images/team22.jpg"  class="img">
+						<h5 class="mt-3">Dennis Tuso</h5>
+						<p>MIT graduate</p>
+						<p>Rating:<i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></p>
+						<button class="btn btn-warning">Start Chat</button>
+					</div>
+					<div class="mt-4 col-md-3 col-6">
+						<img src="images/team3.jpg"  class="img">
+						<h5 class="mt-3">Mark Timothy</h5>
+						<p>Trader at uniswap</p>
+						<p>Rating:<i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star"></i></p>
+						<button class="btn btn-warning">Start Chat</button>
+					</div>
+					<div class="mt-4 col-md-3 col-6">
+
+							<img src="images/t.jpg"  class="img">
+							<h5 class="mt-3">Arnold Noah</h5>
+							<p>Trader</p>
+							<p>Rating:<i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i></p>
+							<button class="btn btn-warning">Start Chat</button>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="mt-5">
+			<div class="container">
+				<div class="row mb-5">
+					<h3 style="font-size: 35px;"><b>Get in touch. Stay in touch.</b></h3>
+				</div>
+				<div class="row ">
+					<div class="col-md-3 text-center">
+						<a href="" class="ahref">
+							<div class="getintouch">
+								<img src="images/ensupport.png" class="img-responsive" width="30%">
+								<h6 class="mt-4">24 / 7 Support</h6>
+								<p class="mt-3"><small>Got a problem? Just get in touch. Our support team is available 24/7.</small></p>
+							</div>
+						</a>
+
+					</div>
+					<div class="col-md-3 text-center">
+						<a href="" class="ahref">
+							<div class="getintouch">
+								<img src="images/enblog.png" class="img-responsive" width="30%">
+								<h6 class="mt-4">Binance Blog</h6>
+								<p class="mt-3"><small>News and updates from the world’s leading cryptocurrency exchange.</small></p>
+							</div>
+						</a>
+						
+					</div>
+					<div class="col-md-3 text-center">
+						<a href="" class="ahref">
+							<div class="getintouch">
+								<img src="images/encommunity.png" class="img-responsive" width="30%">
+								<h6 class="mt-4">Community </h6>
+								<p class="mt-3"><small>Binance is global. Join the discussion in our worldwide communities.</small></p>
+							</div>
+						</a>
+						
+					</div>
+					<div class="col-md-3 text-center">
+						<a href="" class="ahref">
+							<div class="getintouch">
+								<img src="images/encareer.png" class="img-responsive" width="30%">
+								<h6 class="mt-4">Career </h6>
+								<p class="mt-3"><small>Help build the future of technology. Start your new career at Binance.</small></p>
+							</div>
+						</a>
+						
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer>
+		<div class="container">
+			<div class="row text-center text-white ">
+				<h2 class="mb-3">Start trading now</h2>
+				<div class="col-12">
+					<a class="btn btn-warning mx-4" style="width: 160px" href="https://accounts.binance.com/en/register?">Register Now</a>
+					<a class="btn btn-outline-warning outline" style="width: 160px" href="https://www.binance.com/en/trade/BTC_USDT">Trade Now</a>
+				</div>
+
+			</div>
+		</div>
+		<div class="containment foot">
+			<div class="row">
+				<div class="col-md-2">
+					<h5 class="text-white">About Us</h5>
+					<ul class="list-unstyled list">
+						<li><a href="https://www.binance.com/en/about" class="foot-link">About</a></li>
+						<li><a href="https://www.binance.com/en/career" class="foot-link">Careers</a></li>
+						<li><a href="https://www.binance.com/en/about#email" class="foot-link">Business Contacts</a></li>
+						<li><a href="https://www.binance.com/en/community" class="foot-link">Community</a></li>
+						<li><a href="https://www.binance.com/en/blog" class="foot-link">Binance Blogs</a></li>
+						<li><a href="https://www.binance.com/en/terms" class="foot-link">Terms</a></li>
+						<li><a href="https://www.binance.com/en/privacy" class="foot-link">Privacy</a></li>
+						<li><a href="https://www.binance.com/en/support/announcement" class="foot-link">Announcements</a></li>
+						<li><a href="https://www.binance.com/en/news" class="foot-link">News</a></li>
+					</ul>
+				</div>
+				<div class="col-md-2">
+					<h5 class="text-white">Products</h5>
+					<ul class="list-unstyled list">
+						<li><a href="https://www.binance.com/en" class="foot-link">Exchange</a></li>
+						<li><a href="https://academy.binance.com/en" class="foot-link">Academy</a></li>
+						<li><a href="https://www.binance.charity/" class="foot-link">BCF</a></li>
+						<li><a href="https://www.binance.com/en/cards" class="foot-link">Card</a></li>
+						<li><a href="https://labs.binance.com/" class="foot-link">Labs </a></li>
+						<li><a href="https://launchpad.binance.com/en" class="foot-link">Launchpad</a></li>
+						<li><a href="https://research.binance.com/" class="foot-link">Research</a></li>
+						<li><a href="https://trustwallet.com/" class="foot-link">Trust Wallet</a></li>
+					</ul>
+				</div>
+				<div class="col-md-2">
+					<h5 class="text-white">Service</h5>
+					<ul class="list-unstyled list">
+						<li><a href="https://www.binance.com/en/download" class="foot-link">Downloads</a></li>
+						<li><a href="https://www.binance.com/en/buy-sell-crypto" class="foot-link">Buy Crypto</a></li>
+						<li><a href="https://www.binance.com/en/fee/schedule" class="foot-link">Fees</a></li>
+						<li><a href="https://www.binance.com/en/vip-institutional-services" class="foot-link">Instutional Services</a></li>
+						<li><a href="https://www.binance.com/en/activity/referral" class="foot-link">Referral </a></li>
+						<li><a href="https://www.binance.com/en/bnb" class="foot-link">BNB</a></li>
+						<li><a href="https://www.binance.com/en/busd" class="foot-link">Buy BUSD</a></li>
+						<li><a href="https://www.binance.com/en/otc-trading" class="foot-link">OTC Trading</a></li>
+						<li><a href="https://www.binance.com/en/usercenter/coin-apply" class="foot-link">Listing Application</a></li>
+						<li><a href="https://www.binance.com/en/trade-rule" class="foot-link">Trading Rules</a></li>
+						<li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeeaZzHatVVE2TLLQoYIBLkuynbRpnsTK6Hs3IzkPf_0ZP7Aw/viewform?usp=sf_link" class="foot-link">Fiat Gateway Application </a></li>
+						<li><a href="https://www.binance.com/en/support/announcement/360039019631" class="foot-link">P2P Merchant Application</a></li>
+						<li><a href="https://www.binance.com/en/landing/data" class="foot-link">Historical Market Data</a></li>
+					</ul>
+				</div>
+				<div class="col-md-2">
+					<h5 class="text-white">Support</h5>
+					<ul class="list-unstyled list">
+						<li><a href="https://www.binance.com/en/my/user-support/feedback/entry" class="foot-link">Give Us Feedback</a></li>
+						<li><a href="https://www.binance.com/en/support" class="foot-link">Support Center</a></li>
+						<li><a href="https://www.binance.com/en/chat" class="foot-link">Submit a request</a></li>
+						<li><a href="https://binance-docs.github.io/apidocs/spot/en/" class="foot-link">API Documentation</a></li>
+						<li><a href="https://www.binance.com/en/official-verification" class="foot-link">Binance Verify </a></li>
+					</ul>
+				</div>
+				<div class="col-md-2">
+					<h5 class="text-white">Learn</h5>
+					<ul class="list-unstyled list">
+						<li><a href="https://www.binance.com/en/buy-BNB" class="foot-link">Buy BNB</a></li>
+						<li><a href="https://www.binance.com/en/buy-Bitcoin" class="foot-link">Buy Bitcoin</a></li>
+						<li><a href="https://www.binance.com/en/buy-Ethereum" class="foot-link">Buy Ethereum</a></li>
+						<li><a href="https://www.binance.com/en/buy-Ripple" class="foot-link">Buy Ripple</a></li>
+						<li><a href="https://www.binance.com/en/buy-Litecoin" class="foot-link">Buy Litecoin </a></li>
+						<li><a href="https://www.binance.com/en/buy-Bitcoin-Cash" class="foot-link">Buy Bitcoin Cash </a></li>
+						<li><a href="https://www.binance.com/en/buy-Dogecoin-Doge" class="foot-link">Buy Dogecoin </a></li>
+						<li><a href="https://www.binance.com/en/buy-DeFi-tokens" class="foot-link">Buy DeFi </a></li>
+					</ul>
+				</div>
+				<div class="col-md-2">
+					<h5 class="text-white">Community</h5>
+					<div class="row">
+						<div class="col-md-2 col-1">
+							<a href="https://www.binance.com/en/community" class="foot-link"><i class="fa fa-telegram"></i></a>
+						</div>
+						<div class="col-md-2 col-1">
+							<a href="https://www.facebook.com/binance" class="foot-link"><i class="fa fa-facebook"></i></a>
+						</div>
+						<div class="col-md-2 col-1">
+							<a href="https://twitter.com/binance" class="foot-link"><i class="fa fa-twitter"></i></a>
+						</div>
+						<div class="col-md-2 col-1">
+							<a href="https://www.reddit.com/r/binance" class="foot-link"><i class="fa fa-reddit"></i></a>
+						</div>
+						<div class="col-md-3 col-1">
+							<a href="https://www.instagram.com/Binance/" class="foot-link"><i class="fa fa-instagram"></i></a>
+						</div>
+						<div class="col-md-2 col-1">
+							<a href="https://coinmarketcap.com/exchanges/binance/" class="foot-link"><img src="images/coinsmarket.png" width="100%"></i></a>
+						</div>
+						<div class="col-md-2 col-1">
+							<a href="https://vk.com/binance" class="foot-link"><i class="fa fa-vk"></i></a>
+						</div>
+						<div class="col-md-2 col-1">
+							<a href="https://www.youtube.com/binanceyoutube" class="foot-link"><i class="fa fa-youtube"></i></a>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<div class="sub-footer">
+			<p class="text-center"><small>Binance © 2021</small></p>
+		</div>
+	</footer>
+
+
+
+</div><!-- container //  -->
+<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+<script type="text/javascript">
+
+	window.addEventListener("resize", function() {
+		"use strict"; window.location.reload(); 
+	});
+
+
+	document.addEventListener("DOMContentLoaded", function(){
+
+		// make it as accordion for smaller screens
+		if (window.innerWidth > 992) {
+
+			document.querySelectorAll('.navbar .nav-item').forEach(function(everyitem){
+				
+				everyitem.addEventListener('mouseover', function(e){
+
+					let el_link = this.querySelector('a[data-bs-toggle]');
+
+					if(el_link != null){
+						let nextEl = el_link.nextElementSibling;
+						el_link.classList.add('show');
+				 		nextEl.classList.add('show');
+					}
+					
+				});
+				everyitem.addEventListener('mouseleave', function(e){
+				 	let el_link = this.querySelector('a[data-bs-toggle]');
+					
+					if(el_link != null){
+						let nextEl = el_link.nextElementSibling;
+						el_link.classList.remove('show');
+				 		nextEl.classList.remove('show');
+					}
+					
+
+				})
+			});
+
+		}
+		// end if innerWidth
+	}); 
+</script>
+<script async="async" src="https://static.mobilemonkey.com/js/mm_26cb90391ed6fb648466d970058f2d4fc657a53f.js"></script>
+<script>
+window.mmDataLayer = window.mmDataLayer || [];
+function mmData(o) { mmDataLayer.push(o); }
+</script>
+<script src="bootstrap/js/bootstrap.bundle.js"></script>
+</body>
+</html>
